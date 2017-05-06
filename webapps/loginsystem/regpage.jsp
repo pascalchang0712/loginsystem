@@ -4,9 +4,11 @@
   <head>
     <meta charset="utf-8">
     <title>  welcome   </title>
+    <link rel="stylesheet" href="mystyle.css">
+
   </head>
-  <body>
-    <h1>註冊一個新帳號</h1>
+  <body class="blue">
+    <h1 class="navbar">註冊一個新帳號</h1>
     <form action='login.jsp' name= "form" method="post">
     帳號<input type="text" size="20" name="userid"><br>
     密碼<input type="password" size="20" name="userpass"><br>
