@@ -6,6 +6,11 @@ String pass = "Ss4104029001!";
 String database = "4104029001";
 String driver ="com.mysql.jdbc.Driver";
 String url = "jdbc:mysql://"+"140.120.49.205:3306/" + database + "?useUnicode=true&characterEncoding=big5";
+// String user = "root";
+// String pass = "";
+// String database = "loginpg";
+// String driver ="com.mysql.jdbc.Driver";
+// String url = "jdbc:mysql://"+"127.0.0.1:3306/" + database + "?useUnicode=true&characterEncoding=big5";
 
 ResultSet rs = null ;
 Statement stmt = null;
@@ -15,6 +20,18 @@ Connection conn = null;
 PreparedStatement pstmt = null;
 
 %>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="mystyle.css">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body id="body" class="blue">
+    <h1 id="banner" class="navbar"></h1>
+  </body>
+</html>
 <%
         try{
           Class.forName(driver).newInstance();
@@ -92,18 +109,80 @@ PreparedStatement pstmt = null;
         }
         break;
       }
+      case "query" :{
+      String searchBy = request.getParameter("searchBy");
+      String datatype = request.getParameter("datatype");
+      String sql ="select * from userdata where userid='" + datatype +"'" ;
+      switch(searchBy){
+        case "userid":
+          sql ="select * from userdata where userid='" + datatype +"'" ;
+        break;
+
+        case "name":
+          sql ="select * from userdata where name='" + datatype +"'" ;
+        break;
+
+        case "birthday":
+          sql ="select * from userdata where birthday='" + datatype +"'" ;
+        break;
+
+        case "all":
+          sql ="select * from userdata " ;
+        break;
+      }
+      //String sql ="select * from userdata";
+      rs = stmt.executeQuery(sql);
+      if(rs.next()){
+        rs.beforeFirst();
+        %><table border="1">
+          <tr>
+            <td>會員帳號</td>
+            <td>會員密碼</td>
+            <td>會員名稱</td>
+            <td>生日</td>
+            <td>註記</td>
+          </tr>
+          <%while(rs.next()){%>
+            <tr>
+              <td><%=rs.getString(2)%></td>
+              <td><%=rs.getString(3)%></td>
+              <td><%=rs.getString(4)%></td>
+              <td><%=rs.getString(5)%></td>
+              <td><%=rs.getString(6)%></td>
+            </tr>
+          <%}%>
+
+
+            </table><br>
+
+            <script>
+            document.getElementById("banner").innerHTML = "查詢結果";
+            var a = document.createElement("a");
+            a.setAttribute("href", "welcome.jsp");
+            a.innerHTML="返回";
+            document.getElementById("body").appendChild(a);
+            </script>
+
+
+          <%
+      }else{
+        out.println("查無資料");
+        %>
+        <br><br><br>
+        <script>
+        document.getElementById("banner").innerHTML = "查詢結果";
+        var a = document.createElement("a");
+        a.setAttribute("href", "welcome.jsp");
+        a.innerHTML="返回";
+        document.getElementById("body").appendChild(a);
+        </script>
+        <%
+      }
+      break;
+
+
+    }
  }
 
 
  %>
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-
-  </body>
-</html>
