@@ -8,12 +8,15 @@
   <head>
     <meta charset="utf-8">
     <title>  welcome   </title>
-    <link rel="stylesheet" href="mystyle.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 
   </head>
-  <body class="blue">
-    <h1 class="navbar">歡迎</h1>
-    <img src="lkE60.gif">
+  <body>
+    <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+      <h1 class="navbar">Welcome</h1>
+
       <form  action='login.jsp' name= "form" method="post">
         資料查詢
         <select name="searchBy">
@@ -28,5 +31,7 @@
 
 
       </form>
+
+    </div>
   </body>
 </html>

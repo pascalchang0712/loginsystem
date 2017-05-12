@@ -24,12 +24,20 @@ PreparedStatement pstmt = null;
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="mystyle.css">
-    <meta charset="utf-8">
-    <title></title>
+    <title>MyWeb</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8" >
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="style.css">
   </head>
-  <body id="body" class="blue">
-    <h1 id="banner" class="navbar"></h1>
+  <body id="body" >
+    <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+      <div class="w3-display-topleft w3-padding-large w3-xlarge">
+        <a href="index.jsp" style="text-decoration:none;padding-right:20px;">Home</a>
+        <a href="main.jsp" style="text-decoration:none;padding-right:20px;">Sign in</a>
+        <a href="regpage.jsp" style="text-decoration:none;padding-right:20px;">Join us</a>
+      </div>
+  </div>
   </body>
 </html>
 <%
@@ -62,14 +70,13 @@ PreparedStatement pstmt = null;
            //out.println(rs);
 
              if(rs.next()){
-               out.println("登入成功");
                response.setHeader("Refresh","0;url=welcome.jsp");
              }else{
-               %><script>alert("密碼錯誤");</script><%
+               %><script>alert("Incorrect Password");</script><%
                response.setHeader("Refresh","0;url=main.jsp");
              }
           }else{
-            %><script>alert("無此帳號 跳轉注冊頁面");</script><%
+            %><script>alert("Invalid accountname skip to register page");</script><%
             response.setHeader("Refresh","0;url=regpage.jsp");
           }
         break;
@@ -83,26 +90,26 @@ PreparedStatement pstmt = null;
         String birthday = request.getParameter("userbirthday");
 
         if(username==""||userpass==""||userid==""||birthday==""){
-          %><script>alert("欄位不可留空");</script><%
+          %><script>alert("All spaces must be filled");</script><%
           response.setHeader("Refresh","0;url=regpage.jsp");
         }
         else{
           if(!reuserpass.equals(userpass)){
-            %><script>alert("兩次密碼不相同");</script><%
+            %><script>alert("Passwords must match");</script><%
             response.setHeader("Refresh","0;url=regpage.jsp");
           }else{
             String sql = "select userid from userdata where userid='" + userid +"'" ;
             rs = stmt.executeQuery(sql);
 
             if(rs.next()) {
-              %><script>alert("已存在的帳號");</script><%
+              %><script>alert("Account exists");</script><%
               response.setHeader("Refresh","0;url=regpage.jsp");
             }
             else{
               sql = "insert into userdata(userid,userpass,name,birthday,memo) values('"+userid+"','"+userpass+"','"+username+"','"+birthday+"','"+usermemo+"');";
               stmt.executeUpdate(sql);
 
-              %><script>alert("註冊成功");</script><%
+              %><script>alert("Welcome <%=username%>");</script><%
               response.setHeader("Refresh","0;url=main.jsp");
             }
           }
@@ -134,7 +141,10 @@ PreparedStatement pstmt = null;
       rs = stmt.executeQuery(sql);
       if(rs.next()){
         rs.beforeFirst();
-        %><table border="1">
+        %>
+        <div class="w3-display-middle" style="text-align:center;background-color:Gainsboro">
+        <h1>Results</h1>
+        <table border="1">
           <tr>
             <td>會員帳號</td>
             <td>會員密碼</td>
@@ -153,14 +163,12 @@ PreparedStatement pstmt = null;
           <%}%>
 
 
-            </table><br>
+            </table>
+          </div>
+            <br>
 
             <script>
             document.getElementById("banner").innerHTML = "查詢結果";
-            var a = document.createElement("a");
-            a.setAttribute("href", "welcome.jsp");
-            a.innerHTML="返回";
-            document.getElementById("body").appendChild(a);
             </script>
 
 
@@ -171,10 +179,6 @@ PreparedStatement pstmt = null;
         <br><br><br>
         <script>
         document.getElementById("banner").innerHTML = "查詢結果";
-        var a = document.createElement("a");
-        a.setAttribute("href", "welcome.jsp");
-        a.innerHTML="返回";
-        document.getElementById("body").appendChild(a);
         </script>
         <%
       }
