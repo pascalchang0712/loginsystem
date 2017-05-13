@@ -9,27 +9,28 @@
     <title>MyWeb</title>
   </head>
   <body>
-      <div class="bgimg w3-display-container w3-animate-opacity w3-text-black" >
+      <div class="bgimg w3-display-container w3-animate-opacity w3-text-white" >
         <div class="w3-display-topleft w3-padding-large w3-xlarge w3-text-white">
           <a href="index.jsp" style="text-decoration:none;padding-right:20px;">Home</a>
           <a href="main.jsp" style="text-decoration:none;padding-right:20px;">Sign in</a>
           <a href="regpage.jsp" style="text-decoration:none;padding-right:20px;">Join us</a>
         </div>
 
-        <div class="w3-display-middle" style="text-align:center;background-color:Gainsboro;">
+        <div class="w3-display-topright" style="text-align:center;margin-right:10%;margin-top:100px;">
 
-          <h1 class="w3-jumbo w3-animate-top">Sign in</h1>
+          <h1 class="w3-jumbo w3-animate-top" style="margin-bottom:40px">Sign in</h1>
           <form  action='login.jsp' name= "form" method="post" style="text-align:left">
-          Username<input type="text" size="20" name="userid" float="left"><br>
-          Password <input type="password" size="20" name="userpass">
-          <input type ="submit" value="Sign in">
+          USERNAME<input type="text" size="20" name="userid" float="left" style="margin-bottom:15px;margin-left:7px;background-color:#ffffff;opacity: .4;border:0;" ><br>
+          PASSWORD<input type="password" size="20" name="userpass" style="margin-bottom:15px;margin-left:5px;background-color:#ffffff;opacity: .4;border:0;"><br>
+          <input class="w3-display-bottomright" type ="submit" value="Sign in" style="border:0;background-color:transparent;color:white;"><br>
           <input type="hidden" value="main" name="class" ClientIdMode="static">
           </form>
-          <button ><a href="regpage.jsp" style="color:black;text-decoration: none">Register</a></button>
-          <button>Forget Password?</button>
-
         </div>
-
+        <div class="w3-display-right" style="margin-right:13%;">
+          <br><br><br><br><br>
+          <a  href="regpage.jsp" class="whitectn">REGISTER |</a>
+          <a  href="regpage.jsp" class="whitectn">FORGET PASSWORD</a>
+        </div>
 
 
 

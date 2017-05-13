@@ -17,7 +17,7 @@
   <div class="w3-display-middle" style="text-align:center">
     <h1 class="w3-jumbo w3-animate-top">WELCOME</h1>
     <hr class="w3-border-grey" style="margin:auto;width:40%"><br><br>
-    <button class="w3-button w3-padding-large w3-white" style="font-family:Arial;font-size:20px;"><a href="main.jsp" style="text-decoration:none;">Get started</a></button>
+    <button class="w3-button w3-padding-large whitectn"><a href="main.jsp" style="text-decoration:none;">Get started</a></button>
 
   </div>
 

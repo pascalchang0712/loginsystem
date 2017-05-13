@@ -15,23 +15,26 @@
   </head>
   <body>
     <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
-      <h1 class="navbar">Welcome</h1>
+      <div class="w3-display-middle">
+        <h1 class="w3-jumbo w3-animate-top" style="text-align:center; ">Welcome</h1>
 
-      <form  action='login.jsp' name= "form" method="post">
-        資料查詢
-        <select name="searchBy">
-        <option value="userid">帳號</option>
-        <option value="name">名稱</option>
-        <option value="birthday">生日</option>
-        <option value="all">全部顯示</option>
-        </select>
-        <input type="text" size="20" name="datatype" placeholder="請輸入欲查詢資料">
-        <input type ="submit" value="查詢">
-        <input type="hidden" value="query" name="class" ClientIdMode="static">
+        <form  action='login.jsp' name= "form" method="post">
+          資料查詢
+          <select name="searchBy">
+          <option value="userid">帳號</option>
+          <option value="name">名稱</option>
+          <option value="birthday">生日</option>
+          <option value="all">全部顯示</option>
+          </select>
+          <input type="text" size="20" name="datatype" placeholder="請輸入欲查詢資料">
+          <input type ="submit" value="查詢">
+          <input type="hidden" value="query" name="class" ClientIdMode="static">
 
 
-      </form>
+        </form>
 
+
+      </div>
     </div>
   </body>
 </html>
